@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard</title>
+  <link rel="stylesheet" href="styled.css">
+</head>
+<body>
+  <h1>Dashboard</h1>
+  <button id="usageStatsBtn">Usage Stats</button>
+  <div style="width: 50%; height: 50%;">
+    <canvas id="pieChart" style="max-width: 100%; max-height: 100%;"></canvas>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script>
+    // Get the canvas element
+    const ctx = document.getElementById('pieChart').getContext('2d');
+
+    // Define the data for the pie chart
+    const data = {
+      labels: ['YouTube', 'Chrome Web Store', 'GitHub', 'GMail', 'Microsoft Edge', 'Netflix', 'Spotify', 'Amazon', 'Google'],
+      datasets: [{
+        label: 'Web Activity Time',
+        data: [17.03, 14.65, 12.34, 10.01, 9.87, 8.54, 7.21, 6.92, 5.42], // Replace these values with the actual data you want to display
+        backgroundColor: [
+          'rgba(255, 99, 132, 0.2)',
+          'rgba(54, 162, 235, 0.2)',
+          'rgba(255, 206, 86, 0.2)',
+          'rgba(75, 192, 192, 0.2)',
+          'rgba(153, 102, 255, 0.2)',
+          'rgba(255, 159, 64, 0.2)',
+          'rgba(238,174,202,0.2)',
+          'rgba(148,187,233,0.2)',
+          'rgba(30,120,123,0.2)'
+        ],
+        borderColor: [
+          'rgba(255, 99, 132, 1)',
+          'rgba(54, 162, 235, 1)',
+          'rgba(255, 206, 86, 1)',
+          'rgba(75, 192, 192, 1)',
+          'rgba(153, 102, 255, 1)',
+          'rgba(255, 159, 64, 1)',
+          'rgba(255, 159, 64, 1)',
+          'rgba(255, 159, 64, 1)',
+          'rgba(255, 159, 64, 1)'
+        ],
+        borderWidth: 1
+      }]
+    };
+    
+    // Define the options for the pie chart
+    const options = {
+  responsive: true,
+  maintainAspectRatio: true, // Allow the chart to resize dynamically
+  plugins: {
+    legend: {
+      position: 'top',
+      labels: {
+        font: {
+          size: 16
+        }
+      }
+    }
+  }
+};
+    
+    // Create the pie chart
+    const pieChart = new Chart(ctx, {
+      type: 'pie',
+      data: data,
+      options: options
+    });
+
+    canvas.width = 200;
+canvas.height = 200;
+    </script>
